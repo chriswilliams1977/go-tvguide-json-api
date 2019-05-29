@@ -14,18 +14,16 @@ package main
 */
 import (
 	"log"
-	"context"
-	"fmt"
-
-	"google.golang.org/api/iterator"
-
-	"cloud.google.com/go/firestore"
+	"net/http"
+	"tvguide/routers"
 )
 
 func main() {
-	/*
+	
 	router := routers.NewRouter()
-	log.Fatal(http.ListenAndServe(":8080", router))*/
+	log.Fatal(http.ListenAndServe(":8080", router))
+
+	/*
 	ctx := context.Background()
 
 	// [START fs_initialize]
@@ -56,5 +54,5 @@ func main() {
 		fmt.Println(doc.Data()["Name"])
 		fmt.Println(doc.Data()["ID"])
 	}
-	// [END fs_get_all_users]
+	// [END fs_get_all_users]*/
 }
