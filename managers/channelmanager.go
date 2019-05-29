@@ -1,9 +1,12 @@
 package managers
 
-import "tvguide/models"
+import (
+	"tvguide/models"
+)
 
 //Return list of channel listings.
 func GetChannelListings() []models.Channel {
+
 	channels := []models.Channel{
 		models.Channel{
 			ID: 1, 
