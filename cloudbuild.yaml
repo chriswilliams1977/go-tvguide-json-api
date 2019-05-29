@@ -2,6 +2,9 @@ steps:
 - name: gcr.io/cloud-builders/docker
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/tvguide:${SHORT_SHA}', '.']
 
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['auth', 'configure-docker']
+
 - name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$PROJECT_ID/tvguide"]
 
