@@ -44,6 +44,14 @@ func init() {
 		Pattern:     "/channels",
 		HandlerFunc: handlers.HandleChannels,
 	})
+
+	/* init /channel/{id}/{time} URL and handler function. */
+	routes = append(routes, Route{
+		Name:        "ChannelTime",
+		Methods:     []string{"DELETE", "GET", "POST"},
+		Pattern:     "/channel/{id}/{time}",
+		HandlerFunc: handlers.HandleChannelTime,
+	})
 }
 
 /* registering all url paths */

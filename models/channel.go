@@ -4,12 +4,14 @@ package models
 type Channel struct {
 	ID int
 	Listings []Listing
+	Name string
 }
 
 //Listing : channel listing object
 type Listing struct {
 	Title string
-	StartDateTime string
+	Date string
+	Time string
 }
 
 //Result : return message

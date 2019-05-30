@@ -19,6 +19,16 @@ import (
 )
 
 func main() {
+	 // get the location
+	 //location,_ := time.LoadLocation("Europe/Rome")
+
+	 // this should give you time in location
+	 //t := time.Now().In(location)
+ 
+	 //fmt.Println(t)
+
+	 //t := time.Now()
+	 //fmt.Println(t.Format(time.Kitchen))
 	
 	router := routers.NewRouter()
 	log.Fatal(http.ListenAndServe(":8080", router))
