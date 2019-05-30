@@ -8,6 +8,7 @@ import (
 	"tvguide/models"
 	"strconv"
 	"time"
+	"log"
 
 	"github.com/gorilla/mux"
 )
@@ -15,7 +16,20 @@ import (
 // handlerFunction for root URL
 func Index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Welcome to our TV Guide V2!")
-	NewReleasePubSub(w, r)
+	// Parse the Pub/Sub message.
+	var m PubSubMessage
+
+	if err := json.NewDecoder(r.Body).Decode(&m); err != nil {
+			log.Printf("json.NewDecoder: %v", err)
+			http.Error(w, "Bad Request", http.StatusBadRequest)
+			return
+	}
+
+	name := string(m.Message.Data)
+	if name == "" {
+			name = "World"
+	}
+	log.Printf("Hello %s!", name)
 }
 
 // handlerFunction for /channels/ url path
