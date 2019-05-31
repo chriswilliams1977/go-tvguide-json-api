@@ -16,6 +16,7 @@ import (
 // handlerFunction for root URL
 func Index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Welcome to our TV Guide V2!")
+	
 	// Parse the Pub/Sub message.
 	var m PubSubMessage
 

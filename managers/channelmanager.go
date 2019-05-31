@@ -68,19 +68,35 @@ func GetListingsByChannelId(id int, timeStamp string) models.Channel {
 				if err != nil {
 					log.Fatal("listing time format error")
 				}
-
-				channelTime, err :=  time.Parse(timeFormat,timeStamp)
+				
+				channelRequestedTime, err :=  time.Parse(timeFormat,timeStamp)
 				if err != nil {
 					log.Fatal("channel time format error")
 				}
 
-				diff := listingTime.Sub(channelTime)
-
-				//remove listing which are in the past
-				if diff < 0 {
+				if(listingTime.Hour() < channelRequestedTime.Hour()){
 					item.Listings = append(item.Listings[:i], item.Listings[i+1:]...)
 					i-- // form the remove item index to start iterate next item
+				} else {
+					if i + 1 < len(item.Listings){
+						//if there is another program get index
+						nextListingIndex := i + 1
+						//get next program time
+						nextListingTime, err := time.Parse(timeFormat, item.Listings[nextListingIndex].Time)
+						if err != nil{
+							log.Fatal("listing time format error")
+						}
+
+						//get duration of current program
+						programDuration := nextListingTime.Sub(listingTime)
+						//if time requested is later than current program duration remove it from listings
+						if channelRequestedTime.Sub(listingTime) > programDuration {
+							item.Listings = append(item.Listings[:i], item.Listings[i+1:]...)
+							i-- // form the remove item index to start iterate next item
+						}
+					}
 				}
+
 			}
 
 			return item
