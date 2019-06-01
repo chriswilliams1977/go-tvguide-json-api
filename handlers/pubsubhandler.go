@@ -6,7 +6,7 @@ package handlers
 type PubSubMessage struct {
 	Message struct {
 			Data []byte `json:"data,omitempty"`
-			ID   string `json:"id"`
+			ID   string `json:"messageId"`
 	} `json:"message"`
 	Subscription string `json:"subscription"`
 }
