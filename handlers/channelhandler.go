@@ -20,7 +20,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	// Parse the Pub/Sub message.
 	var m PubSubMessage
 
-	fmt.Println(m.Message.Data)
+	fmt.Println("message data" + m.Message.Data)
 
 	if err := json.NewDecoder(r.Body).Decode(&m); err != nil {
 			log.Printf("json.NewDecoder: %v", err)
