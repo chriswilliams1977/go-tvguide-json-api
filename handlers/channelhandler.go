@@ -9,7 +9,6 @@ import (
 	"strconv"
 	"time"
 	"log"
-	"fmt"
 
 	"github.com/gorilla/mux"
 )
