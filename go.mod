@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	cloud.google.com/go v0.39.0
+	firebase.google.com/go v3.8.0+incompatible
 	github.com/golang/mock v1.3.1 // indirect
 	github.com/google/btree v1.0.0 // indirect
 	github.com/google/go-cmp v0.3.0 // indirect
