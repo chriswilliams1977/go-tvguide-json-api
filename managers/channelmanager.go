@@ -66,7 +66,7 @@ func GetListingsByChannelId(id int, timeStamp string) models.Channel {
 				//get difference between requested time a listing times
 				listingTime, err := time.Parse(timeFormat, item.Listings[i].Time)
 				if err != nil {
-					log.Fatal("listing time format error")
+					log.Fatal("listing time format errors")
 				}
 				
 				channelRequestedTime, err :=  time.Parse(timeFormat,timeStamp)
