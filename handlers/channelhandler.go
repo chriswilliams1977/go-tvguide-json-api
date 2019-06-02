@@ -22,26 +22,6 @@ import (
 // handlerFunction for root URL
 func Index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Welcome to our TV Guide V2!")
-
-	// [START fs_get_all_new_releases]
-	
-	// Parse the Pub/Sub message.
-	/*
-	var m PubSubMessage
-
-	fmt.Println("message data" , string(m.Message.Data))
-
-	if err := json.NewDecoder(r.Body).Decode(&m); err != nil {
-			log.Printf("json.NewDecoder: %v", err)
-			http.Error(w, "Bad Request", http.StatusBadRequest)
-			return
-	}
-
-	name := string(m.Message.Data)
-	if name == "" {
-			name = "World"
-	}
-	log.Printf("Hello %s!", name)*/
 }
 
 // handlerFunction for /channels/ url path
@@ -144,7 +124,7 @@ func HandleNewReleases(w http.ResponseWriter, r *http.Request) {
 	// [START fs_get_all_new_releases]
 	iter := client.Collection("channels").Documents(ctx)
 	for {
-		
+
 		doc, err := iter.Next()
 		if err == iterator.Done {
 			break
