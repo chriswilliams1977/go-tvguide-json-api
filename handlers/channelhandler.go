@@ -19,6 +19,15 @@ import (
 	"log"
 )
 
+func setLocationDate() string {
+	ams, err := time.LoadLocation("Europe/Amsterdam")
+    if err != nil {
+        log.Fatal(err)
+    }
+    t := time.Now().In(ams)
+	return t.Format("Mon Jan _2 15:04:05")
+}
+
 // handlerFunction for root URL
 func Index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Welcome to our TV Guide V2!")
@@ -27,6 +36,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 // handlerFunction for /channels/ url path
 func HandleChannels(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	
 
 	channels := managers.GetChannelListings()
 
@@ -78,7 +88,7 @@ func HandleChannelTime(w http.ResponseWriter, r *http.Request) {
 	}
 
 	channelTime := vars["time"]	
-	if channelTime != "" {
+	if channelTime == "" {
 		w.WriteHeader(http.StatusNotFound)
 	}
 
