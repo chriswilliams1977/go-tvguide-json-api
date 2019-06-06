@@ -56,7 +56,7 @@ func HandleChannel(w http.ResponseWriter, r *http.Request) {
 
 	t := time.Now()
 	channelTime := t.Format("15:04:05")
-
+	fmt.Println("time now is ", channelTime)
 	switch r.Method {
 
 	case "GET":
@@ -91,7 +91,7 @@ func HandleChannelTime(w http.ResponseWriter, r *http.Request) {
 	if channelTime == "" {
 		w.WriteHeader(http.StatusNotFound)
 	}
-
+	fmt.Println("The sent time is:", channelTime)
 	switch r.Method {
 
 	case "GET":
