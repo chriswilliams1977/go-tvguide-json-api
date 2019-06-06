@@ -2,16 +2,16 @@ package models
 
 //Channel : channel object
 type Channel struct {
-	ID int
-	Listings []Listing
-	Name string
+	ID int `json:"Channel"`
+	Listings []Listing `json:"Listings"`
+	Name string `json:"ChannelName"`
 }
 
 //Listing : channel listing object
 type Listing struct {
-	Title string
-	Date string
-	Time string
+	Title string `json:"Title"`
+	StartDateTime string `json:"StartDateTime"`
+	//Time string `json:"Listings"`
 }
 
 //Result : return message

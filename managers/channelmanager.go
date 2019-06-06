@@ -4,11 +4,15 @@ import (
 	"tvguide/models"
 	"time"
 	"log"
+	"encoding/json"
+	"io/ioutil"
+	"os"
+	"fmt"
 )
 
 //Return list of channel listings.
 func GetChannelListings() []models.Channel {
-
+	
 	channels := []models.Channel{
 		models.Channel{
 			ID: 1, 
@@ -41,12 +45,58 @@ func GetChannelListings() []models.Channel {
 		models.Channel{
 			ID: 2, 
 			Listings: []models.Listing {
-			models.Listing {Title: "test3", Date: "2019-07-26", Time: "15:00:00"},
-			models.Listing {Title: "test4", Date: "2018-07-13", Time: "11:00:00"},
+			models.Listing {Title: "News", Date: "2019-07-13", Time: "07:00:00"},
+			models.Listing {Title: "News", Date: "2018-07-13", Time: "07:30:00"},
+			models.Listing {Title: "News", Date: "2018-07-13", Time: "08:30:00"},
+			models.Listing {Title: "News", Date: "2018-07-13", Time: "09:00:00"},
+			models.Listing {Title: "Soap Series", Date: "2018-07-13", Time: "10:00:00"},
+			models.Listing {Title: "Talkshow", Date: "2018-07-13", Time: "10:30:00"},
+			models.Listing {Title: "News", Date: "2018-07-13", Time: "11:00:00"},
+			models.Listing {Title: "News", Date: "2018-07-13", Time: "12:00:00"},
+			models.Listing {Title: "Talkshow", Date: "2018-07-13", Time: "12:30:00"},
+			models.Listing {Title: "Boardwalk Empire", Date: "2018-07-13", Time: "13:30:00"},
+			models.Listing {Title: "BNN at Work", Date: "2018-07-13", Time: "07:30:00"},
+			models.Listing {Title: "Cartoons", Date: "2018-07-13", Time: "13:45:00"},
+			models.Listing {Title: "Cartoons", Date: "2018-07-13", Time: "14:00:00"},
+			models.Listing {Title: "Talkshow", Date: "2018-07-13", Time: "15:00:00"},
+			models.Listing {Title: "Veronica Mars", Date: "2018-07-13", Time: "16:00:00"},
+			models.Listing {Title: "Cash Cab", Date: "2018-07-13", Time: "16:30:00"},
+			models.Listing {Title: "Kids Time", Date: "2018-07-13", Time: "17:30:00"},
+			models.Listing {Title: "Kids News", Date: "2018-07-13", Time: "18:00:00"},
+			models.Listing {Title: "Kids News", Date: "2018-07-13", Time: "19:00:00"},
+			models.Listing {Title: "News", Date: "2018-07-13", Time: "20:00:00"},
+			models.Listing {Title: "Soap Series", Date: "2018-07-13", Time: "20:30:00"},
+			models.Listing {Title: "Flashback", Date: "2018-07-13", Time: "22:00:00"},
+			models.Listing {Title: "News", Date: "2018-07-13", Time: "00:00:00"},
 			},
 			Name: "Net 2",
 		},
-
+		models.Channel{
+			ID: 3, 
+			Listings: []models.Listing {
+			models.Listing {Title: "Cartoons", Date: "2019-07-13", Time: "07:00:00"},
+			models.Listing {Title: "Cartoons", Date: "2018-07-13", Time: "07:30:00"},
+			models.Listing {Title: "Cartoons", Date: "2018-07-13", Time: "08:30:00"},
+			models.Listing {Title: "News", Date: "2018-07-13", Time: "09:00:00"},
+			models.Listing {Title: "Kids Time", Date: "2018-07-13", Time: "10:00:00"},
+			models.Listing {Title: "Cartoons", Date: "2018-07-13", Time: "10:30:00"},
+			models.Listing {Title: "First Dates Hotel", Date: "2018-07-13", Time: "11:00:00"},
+			models.Listing {Title: "First Dates", Date: "2018-07-13", Time: "12:00:00"},
+			models.Listing {Title: "Talkshow", Date: "2018-07-13", Time: "13:00:00"},
+			models.Listing {Title: "Max TV", Date: "2018-07-13", Time: "13:30:00"},
+			models.Listing {Title: "Max TV", Date: "2018-07-13", Time: "13:45:00"},
+			models.Listing {Title: "News", Date: "2018-07-13", Time: "14:00:00"},
+			models.Listing {Title: "Pretty & Single", Date: "2018-07-13", Time: "15:00:00"},
+			models.Listing {Title: "Taxi", Date: "2018-07-13", Time: "16:00:00"},
+			models.Listing {Title: "Comedy Hour", Date: "2018-07-13", Time: "16:30:00"},
+			models.Listing {Title: "Comedy Hour", Date: "2018-07-13", Time: "17:30:00"},
+			models.Listing {Title: "News", Date: "2018-07-13", Time: "18:00:00"},
+			models.Listing {Title: "Sports Hour", Date: "2018-07-13", Time: "19:00:00"},
+			models.Listing {Title: "Movie", Date: "2018-07-13", Time: "20:00:00"},
+			models.Listing {Title: "Movie", Date: "2018-07-13", Time: "22:00:00"},
+			},
+			Name: "Net 3",
+		},
 	}
 	
 	return channels
