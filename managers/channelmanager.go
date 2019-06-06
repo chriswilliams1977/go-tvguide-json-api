@@ -4,10 +4,6 @@ import (
 	"tvguide/models"
 	"time"
 	"log"
-	"encoding/json"
-	"io/ioutil"
-	"os"
-	"fmt"
 )
 
 //Return list of channel listings.
